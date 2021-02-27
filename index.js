@@ -14,7 +14,17 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-routeNotes(app);
+app.post(
+    '/signup', 
+    passport.authenticate('signup', { session: false }),
+    async (req, res) => {
+        res.json({
+            message: 'Signup successful',
+            user: req.user
+        }).status(200)
+    
+
+})
 
 
 app.listen(port, () => console.log(`Note API listening on http://localhost:${port}!`))
