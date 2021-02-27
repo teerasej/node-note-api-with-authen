@@ -28,7 +28,7 @@ passport.use('signup', new LocalStrategy(
 
 passport.use('login', new LocalStrategy(
     {
-        emailField: 'email',
+        usernameField: 'email',
         passwordField: 'password'
     },
     async (email, password, done) => {
