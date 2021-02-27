@@ -33,21 +33,27 @@ passport.use('login', new LocalStrategy(
     },
     async (email, password, done) => {
 
-        let client = await dbConnection.connect()
-        let collection = client.db(dbName).collection('users')
-       
-        collection.findOne({ email: email }, (err, user) => {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect email.' });
-            }
-            if (!(user.password === password)) {
-                return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-        });
+        try {
+            let client = await dbConnection.connect()
+            let collection = client.db(dbName).collection('users')
 
-        client.close()
+            collection.findOne({ email: email }, (err, user) => {
+                if (err) { return done(err); }
+                if (!user) {
+                    return done(null, false, { message: 'Incorrect email.' });
+                }
+                if (!(user.password === password)) {
+                    return done(null, false, { message: 'Incorrect password.' });
+                }
+                return done(null, user);
+            });
+        } catch (error) {
+            return done(null, false)
+
+        } finally {
+            client.close()
+        }
+
     })
 );
 
