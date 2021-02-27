@@ -32,9 +32,9 @@ passport.use('login', new LocalStrategy(
         passwordField: 'password'
     },
     async (email, password, done) => {
-
+        let client = await dbConnection.connect()
         try {
-            let client = await dbConnection.connect()
+            
             let collection = client.db(dbName).collection('users')
 
             collection.findOne({ email: email }, (err, user) => {
