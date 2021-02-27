@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 app.get('/notes', async (req,res) => {
 
     let client = await dbConnection.connect()
-    let collection = client.db(dbName).collection('people')
+    let collection = client.db(dbName).collection('notes')
     let result = await collection.find().limit(10).toArray()
     client.close()
 
