@@ -1,7 +1,9 @@
 const express = require('express')
+const passport = require('./authen')
 const app = express()
 const port = 3000
 app.use(express.json());
+app.use(passport.initialize());
 
 const {ObjectId} = require('mongodb');
 const dbConnection = require('./db');
