@@ -6,7 +6,7 @@ const dbName = 'nfmongop';
 
 passport.use('signup', new LocalStrategy(
     {
-        emailField: 'email',
+        usernameField: 'email',
         passwordField: 'password'
     },
     async (email, password, done) => {
