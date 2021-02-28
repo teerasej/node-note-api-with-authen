@@ -1,5 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
+const JWTstrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 const dbConnection = require('./db');
 const dbName = 'nfmongop';
@@ -56,6 +58,22 @@ passport.use('login', new LocalStrategy(
 
     })
 );
+
+passport.use(
+    new JWTstrategy(
+      {
+        secretOrKey: 'TOP_SECRET',
+        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
+      },
+      async (token, done) => {
+        try {
+          return done(null, token.user);
+        } catch (error) {
+          done(error);
+        }
+      }
+    )
+  );
 
 module.exports = passport;
 
