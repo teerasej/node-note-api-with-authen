@@ -10,7 +10,7 @@ const dbName = 'nfmongop';
 
 
 // read
-router.get('/notes', async (req, res) => {
+router.get('/', async (req, res) => {
 
     let client = await dbConnection.connect()
     let collection = client.db(dbName).collection('notes')
@@ -21,7 +21,7 @@ router.get('/notes', async (req, res) => {
 })
 
 // create
-router.post('/notes', async (req, res) => {
+router.post('/', async (req, res) => {
 
     let newNote = req.body
 
@@ -34,7 +34,7 @@ router.post('/notes', async (req, res) => {
 })
 
 // update
-router.put('/notes', async (req, res) => {
+router.put('/', async (req, res) => {
 
     let targetNote = req.body
 
@@ -53,7 +53,7 @@ router.put('/notes', async (req, res) => {
 })
 
 // delete
-router.delete('/notes', async (req, res) => {
+router.delete('/', async (req, res) => {
 
     let targetNote = req.body
 
