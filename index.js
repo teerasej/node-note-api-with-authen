@@ -60,4 +60,18 @@ app.post(
   );
 
 
+  app.get(
+    '/profile',
+    passport.authenticate('jwt', { session: false }),
+    (req, res, next) => {
+      res.json({
+        message: 'You made it to the secure route',
+        user: req.user,
+        token: req.query.secret_token
+      })
+    }
+  );
+  
+
+
 app.listen(port, () => console.log(`Note API listening on http://localhost:${port}!`))
