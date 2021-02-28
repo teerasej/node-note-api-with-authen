@@ -10,7 +10,7 @@ const port = 3000
 
 app.use(express.json())
 app.use(passport.initialize())
-app.use('/notes', routeNotes)
+app.use('/notes', passport.authenticate('jwt', { session: false }), routeNotes)
 app.use('/users', passport.authenticate('jwt', { session: false }), routeUser)
 app.use('/', routeAuthen)
 
