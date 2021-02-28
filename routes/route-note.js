@@ -26,6 +26,9 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
 
     let newNote = req.body
+    
+    let uid = req.user._id
+    newNote.userId = uid;
 
     let client = await dbConnection.connect()
     let collection = client.db(dbName).collection('notes')
