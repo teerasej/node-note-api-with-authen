@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
     let client = await dbConnection.connect()
     let collection = client.db(dbName).collection('notes')
-    let result = await collection.find().limit(10).toArray()
+    let result = await collection.find({ userId: uid }).toArray()
     // client.close()
 
     res.json(result)
