@@ -12,8 +12,11 @@ const dbName = 'nfmongop';
 // read
 router.get('/', async (req, res) => {
 
+    let uid = req.user._id;
+
     let client = await dbConnection.connect()
     let collection = client.db(dbName).collection('notes')
+    let result = await collection.find().limit(10).toArray()
     // client.close()
 
     res.json(result)
