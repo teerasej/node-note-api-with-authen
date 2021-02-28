@@ -87,7 +87,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYwM2E2NDg1ZGI2MmFmMDZmYzdlY2UwOSIsImVtYWlsIjoicG9uQGdtYWlsLmNvbSJ9LCJpYXQiOjE2MTQ0NzM0MTN9.ZpgUnzzAWeA1xB1N_STwyHI6nSxxv99mSPCVWOIuWf4",
+							"value": "{{token}}",
 							"type": "string"
 						}
 					]
@@ -107,6 +107,175 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "[jwt] Create new user's note",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"สวัสดี\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/notes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[jwt] Get all user's notes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/notes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[jwt] Delete a user's note",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\":\"603b29f535128422c6c539ea\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/notes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[jwt] Update a user's note",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\":\"603b29f535128422c6c539ea\",\n    \"message\": \"แก้ไขแล้ว\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/notes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notes",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYwM2E2NDg1ZGI2MmFmMDZmYzdlY2UwOSIsImVtYWlsIjoicG9uQGdtYWlsLmNvbSJ9LCJpYXQiOjE2MTQ0ODk5MjR9.roJJNC_m7ZHBAp9VKI6ZsnPtt7Nzr7grwGxsok7gsnU"
 		}
 	]
 }
