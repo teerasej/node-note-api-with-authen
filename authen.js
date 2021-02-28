@@ -22,7 +22,7 @@ passport.use('signup', new LocalStrategy(
         } catch (error) {
             return done(null, false, { message: 'create user error' })
         } finally {
-            client.close()
+            // await client.close()
         }
 
     })
@@ -53,7 +53,7 @@ passport.use('login', new LocalStrategy(
             return done(null, false)
 
         } finally {
-            client.close()
+            // await client.close()
         }
 
     })
