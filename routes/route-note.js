@@ -48,7 +48,7 @@ router.put('/', async (req, res) => {
 
     let filter = { _id: ObjectId(targetNote._id) }
     let query = {
-        $set: { first_name: targetNote.first_name }
+        $set: { message: targetNote.message }
     }
 
     let result = await collection.updateOne(filter, query)
