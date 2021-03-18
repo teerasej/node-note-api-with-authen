@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/b487dd30-60a4-4772-88a5-dc68a7660501/resourceGroups/nextflow-mobile-app-training/providers/Microsoft.Web/sites/note-api",
+    "appService.deploySubpath": "."
+}
