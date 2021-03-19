@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const passport = require('./authen')
 
 const routeNotes = require('./routes/route-note')
@@ -11,6 +12,7 @@ app.set('port', process.env.PORT || 3000)
 
 
 app.use(express.json())
+app.use(cors())
 app.use(passport.initialize())
 app.use('/notes', passport.authenticate('jwt', { session: false }), routeNotes)
 app.use('/users', passport.authenticate('jwt', { session: false }), routeUser)
